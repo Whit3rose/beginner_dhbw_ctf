@@ -1,0 +1,6 @@
+When we connect with the server, we get an encrypted flag. At the same time, we can also encrypt our own strings.  
+![otp](/images/otp.png?raw=true "otp")  
+Looking at the given otp.py file, we see that the used encryption method is a one time pad. With this method, we do have a key that  itself is a string. To then encrypt a message, the value of a single letter of that key get added to the value of the letter in the message we want to encrypt. We can see, that this key has a length of 400 characters. The flag is given by the encrypted flag we got. Counting the characters, we see that the flag has a length of 39.   
+The weak point in this method is, that it looks like after the given 400 characters of the key that you can use to encrypt a message, the same key simple gets reused. This is because the algorithm uses the modulo operator. Therefore, if we input a message that has the length of 400-(length of flag), we start with the same characters again, that were used to encrypt the flag. Then we can use a known input like all a's and can backtrack the exact letters that were used to encrypt the flag. Then we can simpy decrypt the given string and the result should be the flag:  
+  
+dhbw{einonetimepadsollteeinonetimepadbleiben}  

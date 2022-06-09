@@ -1,0 +1,20 @@
+<html>
+  <head><title>Hello World</title></head>
+  <body>
+    {% for note in notes %}  
+    {% if note.author.username == user.username %}
+    <a href="{% url 'note_details' id=note.note_id %}">
+    
+    <div>
+      <h1>
+        {{ note.title }}
+      </h1>
+      <p>
+        {{ note.content }}
+      </p>
+    </div>
+    </a>
+    {% endif %}
+    {% endfor %}
+  </body>
+</html>
